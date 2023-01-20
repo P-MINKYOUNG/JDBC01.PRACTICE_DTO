@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="selectCategory">
+       SELECT
+              T1.*
+            , T2.CATEGORY_NAME T2
+         FROM TBL_CATEGORY T1
+         LEFT JOIN TBL_CATEGORY T2 ON(T1.REF_CATEGORY_CODE = T2.CATEGORY_CODE)
+        WHERE T1.CATEGORY_CODE = ?
+          </entry>
+          
+<entry key="insertCategory">
+       INSERT
+         INTO TBL_CATEGORY
+       (
+         CATEGORY_CODE,
+         CATEGORY_NAME,
+         REF_CATEGORY_CODE
+       )
+       VALUES
+       (
+         SEQ_CATEGORY_CODE.NEXTVAL,
+         ?,
+         ?
+       )
+          </entry>
+          
+<entry key="updateCategory">
+       UPDATE
+              TBL_CATEGORY
+          SET CATEGORY_NAME = ?
+            , REF_CATEGORY_CODE = ?
+        WHERE CATEGORY_CODE = ?
+          </entry>
+          
+<entry key="deleteCategory">
+       DELETE
+         FROM TBL_CATEGORY
+        WHERE CATEGORY_CODE = ?
+          </entry>          
+</properties>
